@@ -59,10 +59,10 @@ npm run dev
 ### Message の一覧取得
 
 ```sh
-curl http://localhost:3000/messages
+curl http://localhost:2400/messages
 ```
 
-＊ ブラウザで http://localhost:3000/messages を開いても確認できます
+＊ ブラウザで http://localhost:2400/messages を開いても確認できます
 
 <br />
 
