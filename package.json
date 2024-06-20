@@ -1,0 +1,26 @@
+{
+  "name": "ex-aws-serverless-local-dev-with-express-dynamodb",
+  "scripts": {
+    "dev": "serverless offline start",
+    "serverless": "serverless",
+    "db:install": "serverless dynamodb install",
+    "db:uninstall": "serverless dynamodb remove"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.600.0",
+    "@aws-sdk/lib-dynamodb": "^3.600.0",
+    "@aws-sdk/util-dynamodb": "^3.600.0",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@vendia/serverless-express": "^4.12.6",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "serverless-dotenv-plugin": "^6.0.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "@types/express": "^4.17.21",
+    "serverless-dynamodb": "^0.2.53",
+    "serverless-esbuild": "^1.52.1",
+    "serverless-offline": "^13.6.0"
+  }
+}

@@ -1,0 +1,21 @@
+DevelopmentTable:
+  Type: 'AWS::DynamoDB::Table'
+
+  Properties:
+    TableName: ${env:DB_TABLE_NAME, 'Development'}
+
+    AttributeDefinitions:
+      - AttributeName: Id
+        AttributeType: S
+      - AttributeName: Entity
+        AttributeType: S
+
+    KeySchema:
+      - AttributeName: Id
+        KeyType: HASH
+      - AttributeName: Entity
+        KeyType: RANGE
+
+    ProvisionedThroughput:
+      ReadCapacityUnits: 5
+      WriteCapacityUnits: 5

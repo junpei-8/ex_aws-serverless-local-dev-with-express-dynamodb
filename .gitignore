@@ -1,0 +1,6 @@
+# Build
+.dynamodb/
+.esbuild/
+
+# Dependency
+node_modules/

@@ -1,0 +1,60 @@
+service: aws-serverless
+frameworkVersion: '3'
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ${env:DB_REGION, 'ap-northeast-1'}
+
+useDotenv: true
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+  - serverless-dynamodb
+  - serverless-esbuild
+
+functions:
+  app:
+    handler: src/handler.handler
+    events:
+      - http:
+          method: ANY
+          path: '/'
+          cors: true
+      - http:
+          method: ANY
+          path: '/{any+}'
+          cors: true
+
+resources:
+  Resources: ${file(src/db/table.yml)}
+
+custom:
+  serverless-offline:
+    httpPort: 2400
+    noPrependStageInUrl: true
+    disableCookieValidation: true
+
+  serverless-dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      dbPath: './.dynamodb'
+      inMemory: false
+      migrate: true
+      convertEmptyValues: true
+
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    platform: 'node'
+    target: 'node18'
+    define: { 'require.resolve': undefined }
+    exclude: ['aws-sdk']
+    concurrency: 10

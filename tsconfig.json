@@ -1,0 +1,8 @@
+{
+    "extends": "@tsconfig/node18",
+    "include": ["src/**/*.ts", "serverless.ts"],
+    "exclude": ["node_modules", ".serverless"],
+    "compilerOptions": {
+        "outDir": "./dist",
+    }
+}
