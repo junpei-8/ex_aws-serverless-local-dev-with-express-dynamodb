@@ -35,7 +35,7 @@ resources:
 
 custom:
   serverless-offline:
-    httpPort: 2400
+    httpPort: ${env:SERVER_PORT, 2400}
     noPrependStageInUrl: true
     disableCookieValidation: true
 
@@ -43,7 +43,7 @@ custom:
     stages:
       - dev
     start:
-      port: 8000
+      port: ${env:DB_PORT, 8000}
       dbPath: './.dynamodb'
       inMemory: false
       migrate: true

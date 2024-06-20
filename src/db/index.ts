@@ -67,7 +67,7 @@ const client = (() => {
   console.info('[INFO] Connecting to Local DynamoDB.');
   return new DynamoDBClient({
     region: 'localhost',
-    endpoint: 'http://localhost:8000',
+    endpoint: `http://localhost:${process.env.DB_PORT || 8000}`,
     credentials: {
       accessKeyId: 'local',
       secretAccessKey: 'local',
