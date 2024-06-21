@@ -36,6 +36,7 @@ resources:
 custom:
   serverless-offline:
     httpPort: ${env:SERVER_PORT, 2400}
+    localEnvironment: true
     noPrependStageInUrl: true
     disableCookieValidation: true
 

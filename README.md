@@ -34,21 +34,27 @@ npm run dev
 
 <br />
 
-#### Remote DB に接続する
+### Remote DB に接続して開発サーバーを起動
 
-環境変数を設定することで、リモートの DynamoDB に接続することができます。
+`.env` を作成し環境変数を設定することで、リモートの DynamoDB に接続することができます。
 
-```sh
-IS_REMOTE_DB=true
-DB_REGION=ap-northeast-1
-DB_TABLE_NAME=RemoteDBTableName
-DB_ACCESS_KEY_ID=xxx
-DB_SECRET_ACCESS_KEY=xxx
-```
+1. 環境変数を設定する
 
-```sh
-npm run dev
-```
+   ```sh
+   DB_REGION=
+   DB_TABLE_NAME=
+   DB_ACCESS_KEY_ID=
+   DB_SECRET_ACCESS_KEY=
+   ```
+
+   ※ `DB_ACCESS_KEY_ID` と `DB_SECRET_ACCESS_KEY` は、AWS の IAM にて作成できるアクセスキーを設定してください。\
+   また、作成したアクセスキーを持つユーザーには、DynamoDB の読み書き権限を付与してください。
+
+2. リモート接続コマンドを実行する
+
+   ```sh
+   npm run dev:remote
+   ```
 
 <br />
 

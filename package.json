@@ -2,6 +2,7 @@
   "name": "ex-aws-serverless-local-dev-with-express-dynamodb",
   "scripts": {
     "dev": "serverless offline start",
+    "dev:remote": "IS_REMOTE_DB=true serverless offline",
     "serverless": "serverless",
     "db:install": "serverless dynamodb install",
     "db:uninstall": "serverless dynamodb remove"
