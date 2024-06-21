@@ -14,12 +14,13 @@ const tableName = (() => {
     return tableName;
   }
 
-  if (process.env.IS_OFFLINE) {
+  // 開発環境の場合、DB_TABLE_NAME が設定されていない場合はデフォルト値として Development テーブルを使用する
+  if (process.env.IS_OFFLINE === 'true') {
     return 'Development';
   }
 
   // シングルテーブル設計の場合はテーブル名を必須にする
-  if (!process.env.IS_MULTI_TABLE) {
+  if (process.env.IS_MULTI_TABLE !== 'true') {
     throw new Error('Please set the environment variables: DB_TABLE_NAME');
   }
 
@@ -31,12 +32,12 @@ const tableName = (() => {
  */
 const client = (() => {
   // 本番環境の場合は AWS の DynamoDB に接続
-  if (!process.env.IS_OFFLINE) {
+  if (process.env.IS_OFFLINE !== 'true') {
     return new DynamoDBClient({});
   }
 
   // Remote 接続するかどうか
-  const isRemoteDB = process.env.IS_REMOTE_DB;
+  const isRemoteDB = process.env.IS_REMOTE_DB === 'true';
   if (isRemoteDB) {
     const region = process.env.DB_REGION;
     if (!region) {
